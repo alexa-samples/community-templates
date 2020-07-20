@@ -1,0 +1,282 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "appointment scheduler",
+            "intents": [
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "ScheduleAppointmentIntent",
+                    "slots": [
+                        {
+                            "name": "appointmentDate",
+                            "type": "AMAZON.DATE",
+                            "samples": [
+                                "il {appointmentDate}",
+                                "Vorrei avere un appuntamento il {appointmentDate}",
+                                "che ne dici di {appointmentDate}",
+                                "{appointmentDate}"
+                            ]
+                        },
+                        {
+                            "name": "appointmentTime",
+                            "type": "AMAZON.TIME",
+                            "samples": [
+                                "che ne dici di {appointmentDate}",
+                                "alle {appointmentTime}",
+                                "{appointmentTime}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        
+                        "crea un appuntamento per il {appointmentDate} alle {appointmentTime}" , 
+                        
+                        "programma un appuntamento per il {appointmentDate} alle {appointmentTime}" , 
+                        
+                        "programma un appuntamento alle {appointmentTime} per il {appointmentDate}" , 
+                        
+                        "{appointmentTime} il {appointmentDate}" , 
+                        
+                        "{appointmentDate} alle {appointmentTime}" , 
+                        
+                        "crea un appuntamento per {appointmentDate} alle {appointmentTime}" , 
+                        
+                        "crea un appuntamento per {appointmentDate}" , 
+                        
+                        "crea un appuntamento" , 
+                        
+                        "imposta un appuntamento" , 
+                        
+                        "imposta un appuntamento" , 
+                        
+                        "imposta una riunione" , 
+                        
+                        "imposta una chiamata" , 
+                        
+                        "programma una chiamata" , 
+                        
+                        "programma una riunione" , 
+                        
+                        "programma un appuntamento" 
+                        
+                        
+                    ]
+                },
+                {
+                    "name": "AMAZON.YesIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NoIntent",
+                    "samples": []
+                },
+                {
+                    "name": "CheckAvailabilityIntent",
+                    "slots": [
+                        {
+                            "name": "appointmentDate",
+                            "type": "AMAZON.DATE",
+                            "samples": [
+                                
+                                "il {appointmentDate}" , 
+                                
+                                "controlla {appointmentDate}" , 
+                                
+                                "prova {appointmentDate}" , 
+                                
+                                "{appointmentDate}" 
+                                
+                            ]
+                        },
+                        {
+                            "name": "appointmentTime",
+                            "type": "AMAZON.TIME",
+                            "samples": [
+                                
+                                "controlla {appointmentTime}" , 
+                                
+                                "che ne dici di {appointmentTime}" , 
+                                
+                                "prova {appointmentTime}" , 
+                                
+                                "{appointmentTime}" 
+                                
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "verificare la disponibilit�"
+                    ]
+                }
+            ],
+            "types": []
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "ScheduleAppointmentIntent",
+                    "delegationStrategy": "SKILL_RESPONSE",
+                    "confirmationRequired": true,
+                    "prompts": {
+                        "confirmation": "Confirm.Intent.153503252364"
+                    },
+                    "slots": [
+                        {
+                            "name": "appointmentDate",
+                            "type": "AMAZON.DATE",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.153503252364.817553974409"
+                            },
+                            "validations": [
+                                {
+                                    "type": "isInDuration",
+                                    "prompt": "Slot.Validation.362475628407.1157681478773.1557208284837",
+                                    "start": "P1D",
+                                    "end": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "appointmentTime",
+                            "type": "AMAZON.TIME",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.153503252364.190769526364"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "CheckAvailabilityIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "appointmentDate",
+                            "type": "AMAZON.DATE",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1202202710374.620761290647"
+                            }
+                        },
+                        {
+                            "name": "appointmentTime",
+                            "type": "AMAZON.TIME",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1202202710374.903650749689"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.153503252364.817553974409",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Quando vorresti avere la riunione?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.153503252364.190769526364",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Qual è l'orario migliore?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "A che ora vorresti avere la riunione?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.153503252364.1550516431899",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Per favore dimmi il tuo nome completo."
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Qual é il tuo nome completo?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.153503252364.16028220185",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Qual é il tuo numero di telefono?"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Intent.153503252364",
+                "variations": [
+                    {
+                        "type": "SSML",
+                        "value": "<speak>Ho la tua richiesta di riunione il {appointmentDate} alle {appointmentTime}. Corretto?</speak>"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.362475628407.1157681478773.1557208284837",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "La data deve essere da domani in poi. Quando vorresti avere la riunione?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "La data dell'appuntamento deve essere tra almeno un giorno a partire da ora. Quando vorresti avere la riunione?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1202202710374.620761290647",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Che data vorresti controllare?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1202202710374.903650749689",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Che ora vorresti controllare?"
+                    }
+                ]
+            }
+        ]
+    }
+}

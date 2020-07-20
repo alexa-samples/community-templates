@@ -1,0 +1,197 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "daily stand up",
+            "modelConfiguration": {
+                "fallbackIntentSensitivity": {
+                    "level": "LOW"
+                }
+            },
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "GetCodeIntent",
+                    "slots": [
+                        {
+                            "name": "MeetingCode",
+                            "type": "AMAZON.FOUR_DIGIT_NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "My code is {MeetingCode}",
+                        "The code is {MeetingCode}",
+                        "{MeetingCode}"
+                    ]
+                },
+                {
+                    "name": "GetReportIntent",
+                    "slots": [
+                        {
+                            "name": "questionYesterday",
+                            "type": "AMAZON.SearchQuery",
+                            "samples": [
+                                "{questionYesterday}"
+                            ]
+                        },
+                        {
+                            "name": "questionToday",
+                            "type": "AMAZON.SearchQuery",
+                            "samples": [
+                                "{questionToday}"
+                            ]
+                        },
+                        {
+                            "name": "questionBlocking",
+                            "type": "AMAZON.SearchQuery",
+                            "samples": [
+                                "{questionBlocking}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "{questionToday} today",
+                        "{questionYesterday} yesterday",
+                        "yesterday {questionYesterday}",
+                        "today {questionToday}",
+                        "start my stand up"
+                    ]
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.YesIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NoIntent",
+                    "samples": []
+                },
+                {
+                    "name": "ResetPinIntent",
+                    "slots": [],
+                    "samples": [
+                        "where do i get a pin",
+                        "what is my pin",
+                        "how do i get a pin",
+                        "i need a new pin",
+                        "i forgot my pin"
+                    ]
+                }
+            ],
+            "types": []
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "GetReportIntent",
+                    "delegationStrategy": "ALWAYS",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "questionYesterday",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.420907304064.1434077833163"
+                            }
+                        },
+                        {
+                            "name": "questionToday",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.173201382582.539843571833"
+                            }
+                        },
+                        {
+                            "name": "questionBlocking",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.173201382582.1204298947985"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.288779318596.409557698368",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Alright, first question. What did you do yesterday?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.288779318596.1420775370020",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Got it. What will you do today?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.288779318596.88143460540",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Okay, last question. Is there anything blocking your progress?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.420907304064.1434077833163",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What did you work on yesterday?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.173201382582.539843571833",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What will you work on today?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.173201382582.1204298947985",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What if anything is blocking your progress?"
+                    }
+                ]
+            }
+        ]
+    }
+}

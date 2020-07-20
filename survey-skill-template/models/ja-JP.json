@@ -1,0 +1,192 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "daily stand up",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "GetCodeIntent",
+                    "slots": [
+                        {
+                            "name": "MeetingCode",
+                            "type": "AMAZON.FOUR_DIGIT_NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "わたしのコードは {MeetingCode}",
+                        "コードは {MeetingCode}",
+                        "{MeetingCode}"
+                    ]
+                },
+                {
+                    "name": "GetReportIntent",
+                    "slots": [
+                        {
+                            "name": "questionYesterday",
+                            "type": "AMAZON.SearchQuery",
+                            "samples": [
+                                "{questionYesterday}"
+                            ]
+                        },
+                        {
+                            "name": "questionToday",
+                            "type": "AMAZON.SearchQuery",
+                            "samples": [
+                                "{questionToday}"
+                            ]
+                        },
+                        {
+                            "name": "questionBlocking",
+                            "type": "AMAZON.SearchQuery",
+                            "samples": [
+                                "{questionBlocking}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "今日の {questionToday}",
+                        "昨日の {questionYesterday}",
+                        "昨日の {questionToday}",
+                        "今日の {questionYesterday}",
+                        "スタンドアップを開始する"
+                    ]
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.YesIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NoIntent",
+                    "samples": []
+                },
+                {
+                    "name": "ResetPinIntent",
+                    "slots": [],
+                    "samples": [
+                        "ピンコードはどこで取得しますか",
+                        "わたしのピンコードは何ですか",
+                        "ピンコードはどうやって取得しますか",
+                        "新しいピンコードをください",
+                        "ピンコードを忘れました"
+                    ]
+                }
+            ],
+            "types": []
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "GetReportIntent",
+                    "delegationStrategy": "ALWAYS",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "questionYesterday",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.420907304064.1434077833163"
+                            }
+                        },
+                        {
+                            "name": "questionToday",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.173201382582.539843571833"
+                            }
+                        },
+                        {
+                            "name": "questionBlocking",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.173201382582.1204298947985"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.288779318596.409557698368",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "最初の質問です。昨日は何をしましたか。"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.288779318596.1420775370020",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "わかりました。本日は何をしますか。"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.288779318596.88143460540",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "オッケー。最後の質問です。進捗を妨げているものはありますか。"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.420907304064.1434077833163",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "昨日は何に取り組みましたか。"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.173201382582.539843571833",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "今日は何に取り組みますか。"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.173201382582.1204298947985",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "進捗を妨げているものはありますか。"
+                    }
+                ]
+            }
+        ]
+    }
+}

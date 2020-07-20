@@ -1,0 +1,192 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "daily stand up",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "GetCodeIntent",
+                    "slots": [
+                        {
+                            "name": "MeetingCode",
+                            "type": "AMAZON.FOUR_DIGIT_NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "Meu código é {MeetingCode}",
+                        "O código é {MeetingCode}",
+                        "{MeetingCode}"
+                    ]
+                },
+                {
+                    "name": "GetReportIntent",
+                    "slots": [
+                        {
+                            "name": "questionYesterday",
+                            "type": "AMAZON.SearchQuery",
+                            "samples": [
+                                "{questionYesterday}"
+                            ]
+                        },
+                        {
+                            "name": "questionToday",
+                            "type": "AMAZON.SearchQuery",
+                            "samples": [
+                                "{questionToday}"
+                            ]
+                        },
+                        {
+                            "name": "questionBlocking",
+                            "type": "AMAZON.SearchQuery",
+                            "samples": [
+                                "{questionBlocking}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "{questionToday} hoje",
+                        "{questionYesterday} ontem",
+                        "ontem {questionYesterday}",
+                        "hoje {questionToday}",
+                        "inicie meu stand up"
+                    ]
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.YesIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NoIntent",
+                    "samples": []
+                },
+                {
+                    "name": "ResetPinIntent",
+                    "slots": [],
+                    "samples": [
+                        "aonde consigo uma senha",
+                        "qual a minha senha",
+                        "como consigo uma senha",
+                        "eu preciso de uma senha",
+                        "esqueci minha senha"
+                    ]
+                }
+            ],
+            "types": []
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "GetReportIntent",
+                    "delegationStrategy": "ALWAYS",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "questionYesterday",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.420907304064.1434077833163"
+                            }
+                        },
+                        {
+                            "name": "questionToday",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.173201382582.539843571833"
+                            }
+                        },
+                        {
+                            "name": "questionBlocking",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.173201382582.1204298947985"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.288779318596.409557698368",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Ok, primeira pergunta. O que você fez ontem?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.288779318596.1420775370020",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Entendi. O que você vai fazer hoje?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.288779318596.88143460540",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Ok, última pergunta. Existe alguma coisa bloqueando o seu progresso?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.420907304064.1434077833163",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Em que você trabalhou ontem?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.173201382582.539843571833",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Em que você irá trabalhar hoje?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.173201382582.1204298947985",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Se existe algo bloqueando o seu progresso, o que é?"
+                    }
+                ]
+            }
+        ]
+    }
+}

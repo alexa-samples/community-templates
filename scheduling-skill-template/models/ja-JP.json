@@ -1,0 +1,255 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "appointment scheduler",
+            "intents": [
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "ScheduleAppointmentIntent",
+                    "slots": [
+                        {
+                            "name": "appointmentDate",
+                            "type": "AMAZON.DATE",
+                            "samples": [
+                                "{appointmentDate} に",
+                                "{appointmentDate} にお会いしたいです",
+                                "{appointmentDate} はいかがですか",
+                                "{appointmentDate}"
+                            ]
+                        },
+                        {
+                            "name": "appointmentTime",
+                            "type": "AMAZON.TIME",
+                            "samples": [
+                                "{appointmentTime} はいかがですか",
+                                "{appointmentTime} に",
+                                "{appointmentTime}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "{appointmentDate} {appointmentTime} にアポイントをとってください",
+                        "{appointmentDate} {appointmentTime} にアポイントをスケジュールしてください",
+                        "{appointmentTime} {appointmentDate} にアポイントをスケジュールしてください",
+                        "{appointmentTime} {appointmentDate}",
+                        "{appointmentDate} {appointmentTime}",
+                        "{appointmentDate} {appointmentTime} にアポイントを取得",
+                        "{appointmentDate} の アポイントを取得",
+                        "アポイントを取得",
+                        "アポイントを取得",
+                        "アポイントを取得",
+                        "打ち合わせを設定",
+                        "電話会議を設定",
+                        "電話会議を予約",
+                        "打ち合わせを予約",
+                        "アポイントを取得"
+                    ]
+                },
+                {
+                    "name": "AMAZON.YesIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NoIntent",
+                    "samples": []
+                },
+                {
+                    "name": "CheckAvailabilityIntent",
+                    "slots": [
+                        {
+                            "name": "appointmentDate",
+                            "type": "AMAZON.DATE",
+                            "samples": [
+                                "{appointmentDate} に",
+                                "{appointmentDate} を確認",
+                                "{appointmentDate} を試して",
+                                "{appointmentDate}"
+                            ]
+                        },
+                        {
+                            "name": "appointmentTime",
+                            "type": "AMAZON.TIME",
+                            "samples": [
+                                "{appointmentTime} を確認",
+                                "{appointmentTime} はどうですか",
+                                "{appointmentTime} を試して",
+                                "{appointmentTime}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "空き状況を確認する"
+                    ]
+                }
+            ],
+            "types": []
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "ScheduleAppointmentIntent",
+                    "delegationStrategy": "SKILL_RESPONSE",
+                    "confirmationRequired": true,
+                    "prompts": {
+                        "confirmation": "Confirm.Intent.153503252364"
+                    },
+                    "slots": [
+                        {
+                            "name": "appointmentDate",
+                            "type": "AMAZON.DATE",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.153503252364.817553974409"
+                            },
+                            "validations": [
+                                {
+                                    "type": "isInDuration",
+                                    "prompt": "Slot.Validation.362475628407.1157681478773.1557208284837",
+                                    "start": "P1D",
+                                    "end": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "appointmentTime",
+                            "type": "AMAZON.TIME",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.153503252364.190769526364"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "CheckAvailabilityIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "appointmentDate",
+                            "type": "AMAZON.DATE",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1202202710374.620761290647"
+                            }
+                        },
+                        {
+                            "name": "appointmentTime",
+                            "type": "AMAZON.TIME",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1202202710374.903650749689"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.153503252364.817553974409",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "何日をご希望ですか"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.153503252364.190769526364",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "どの時間帯がいいですか"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "どの時間帯を希望しますか"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.153503252364.1550516431899",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "氏名を教えてください"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "氏名を教えてください"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.153503252364.16028220185",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "電話番号を教えてください"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Intent.153503252364",
+                "variations": [
+                    {
+                        "type": "SSML",
+                        "value": "<speak>{appointmentDate} {appointmentTime}の打ち合わせで間違いないですか。</speak>"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.362475628407.1157681478773.1557208284837",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "明日以降でなければなりません。何日をご希望ですか"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "アポイントは、少なくとも 1 日後を指定する必要があります。何日をご希望ですか"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1202202710374.620761290647",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "確認する日付を指定してください。"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1202202710374.903650749689",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "確認する時間を指定してください。"
+                    }
+                ]
+            }
+        ]
+    }
+}

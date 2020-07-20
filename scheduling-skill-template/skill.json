@@ -1,0 +1,255 @@
+{
+  "manifest": {
+    "apis": {
+      "custom": {
+        "endpoint": {},
+        "interfaces": []
+      }
+    },
+    "permissions": [
+      {
+        "name": "alexa::profile:name:read"
+      },
+      {
+        "name": "alexa::profile:email:read"
+      },
+      {
+        "name": "alexa::profile:mobile_number:read"
+      }
+    ],
+    "publishingInformation": {
+      "locales": {
+        
+        "en-US": {
+          "name": "Appointment Scheduler",
+          "examplePhrases": [
+            
+            "Alexa open Appointment Scheduler" , 
+            
+            "Alexa launch Appointment Scheduler" , 
+            
+            "Alexa start Appointment Scheduler" 
+            
+          ],
+          "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+          "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+        },
+
+        "en-GB": {
+          "name": "Appointment Scheduler",
+          "examplePhrases": [
+            
+            "Alexa open Appointment Scheduler" , 
+            
+            "Alexa launch Appointment Scheduler" , 
+            
+            "Alexa start Appointment Scheduler" 
+            
+          ],
+          "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+          "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+        },
+
+        "en-AU": {
+          "name": "Appointment Scheduler",
+          "examplePhrases": [
+            
+            "Alexa open Appointment Scheduler" , 
+            
+            "Alexa launch Appointment Scheduler" , 
+            
+            "Alexa start Appointment Scheduler" 
+            
+          ],
+          "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+          "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+        },
+        
+        "en-CA": {
+          "name": "Appointment Scheduler",
+          "examplePhrases": [
+            
+            "Alexa open Appointment Scheduler" , 
+            
+            "Alexa launch Appointment Scheduler" , 
+            
+            "Alexa start Appointment Scheduler" 
+            
+          ],
+          "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+          "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+        },
+
+        "en-IN": {
+          "name": "Appointment Scheduler",
+          "examplePhrases": [
+            
+            "Alexa open Appointment Scheduler" , 
+            
+            "Alexa launch Appointment Scheduler" , 
+            
+            "Alexa start Appointment Scheduler" 
+            
+          ],
+          "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+          "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+        },
+
+        "de-DE": {
+          "name": "Alexa, öffnen Terminplaner",
+          "examplePhrases": [
+            
+            "Alexa, starte Terminplaner" , 
+            
+            "Alexa, starte Terminplaner" , 
+            
+            "Dieser Skill wurde unter Verwendung der Terminplaner-Vorlage erstellt." 
+            
+          ],
+          "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+          "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+        },
+        
+        "es-ES": {
+          "name": "Programador de citas abiertas Alexa",
+          "examplePhrases": [
+            
+            "Alexa lanza el Programador de citas" , 
+            
+            "Alexa inicia el Programador de citas" , 
+            
+            "Esta skill fue construida usando la Plantilla del Programador de citas." 
+            
+          ],
+          "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+          "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+        },
+        
+        "es-MX": {
+          "name": "Programador de citas abiertas Alexa",
+          "examplePhrases": [
+            
+            "Alexa lanza el Programador de citas" , 
+            
+            "Alexa inicia el Programador de citas" , 
+            
+            "Esta skill fue construida usando la Plantilla del Programador de citas." 
+            
+          ],
+          "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+          "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+        },
+        
+        "es-US": {
+          "name": "Programador de citas abiertas Alexa",
+          "examplePhrases": [
+            
+            "Alexa lanza el Programador de citas" , 
+            
+            "Alexa inicia el Programador de citas" , 
+            
+            "Esta skill fue construida usando la Plantilla del Programador de citas." 
+            
+          ],
+          "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+          "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+        },
+        
+        "fr-CA": {
+          "name": "Alexa ouvre Logiciel de prise de rendez-vous",
+          "examplePhrases": [
+            
+            "Alexa lance Logiciel de prise de rendez-vous" , 
+            
+            "Alexa démarre Logiciel de prise de rendez-vous" , 
+            
+            "La skill a été créé en utilisant le Appointment Scheduler Template." 
+            
+          ],
+          "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+          "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+        },
+        
+        "fr-FR": {
+          "name": "Alexa ouvre Logiciel de prise de rendez-vous",
+          "examplePhrases": [
+            
+            "Alexa lance Logiciel de prise de rendez-vous" , 
+            
+            "Alexa démarre Logiciel de prise de rendez-vous" , 
+            
+            "La skill a été créé en utilisant le Appointment Scheduler Template." 
+            
+          ],
+          "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+          "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+        },
+        
+        "hi-IN": {
+          "name": "Alexa Appointment Scheduler शुरू करो ",
+          "examplePhrases": [
+            
+            "Alexa Appointment Scheduler शुरू करो " , 
+            
+            "Alexa Appointment Scheduler शुरू करो" , 
+            
+            "ये skill  नियुक्ति निर्धारण template का उपयोग करके बनाया गया था।" 
+            
+          ],
+          "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+          "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+        },
+        
+        "it-IT": {
+          "name": "Alexa apri programmatore di appuntamenti",
+          "examplePhrases": [
+            
+            "Alexa lancia programmatore di appuntamenti" , 
+            
+            "Alexa inizia programmatore di appuntamenti" , 
+            
+            "Questa skill è  stata sviluppata usando il template Programmatore di Appuntamenti" 
+            
+          ],
+          "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+          "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+        },
+        
+        "ja-JP": {
+          "name": "アレクサ、アポイントスケジュール管理を開いて",
+          "examplePhrases": [
+            
+            "アレクサ、アポイントスケジュール管理を起動して" , 
+            
+            "アレクサ、アポイントスケジュール管理をスタートして" , 
+            
+            "このスキルは、アポイントスケジュールのテンプレートを使用して作成されました。" 
+            
+          ],
+          "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+          "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+        },
+        
+        "pt-BR": {
+          "name": "Alexa abra Agendador de Consultas",
+          "examplePhrases": [
+            
+            "Alexa lance Agendador de Consultas" , 
+            
+            "Alexa inicie Agendador de Consultas" , 
+            
+            "Este skill foi criado utilizando o template Agendador de Consulta." 
+            
+          ],
+          "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+          "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+        },
+        "category": "EDUCATION_AND_REFERENCE",
+        "testingInstructions": "This skill was built using the Appointment Scheduler Template.",
+        "isAvailableWorldwide": true,
+        "distributionCountries": []
+      }
+    },
+    "manifestVersion": "1.0"
+  }
+}

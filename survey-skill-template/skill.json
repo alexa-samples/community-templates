@@ -1,0 +1,165 @@
+{
+    "manifest": {
+        "apis": {
+            "custom": {
+                "endpoint": {},
+                "interfaces": []
+            }
+        },
+        "publishingInformation": {
+            "locales": {
+                "de-DE": {
+                    "examplePhrases": [
+                        "Alexa lade tägliches Stand Up",
+                        "Alexa starte tägliches Stand Up",
+                        "tägliches Stand Up"
+                    ],
+                    "name": "Daily Stand Up",
+                    "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+                    "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+                },
+                "en-AU": {
+                    "examplePhrases": [
+                        "Alexa open Daily Stand Up",
+                        "Alexa launch Daily Stand Up",
+                        "Alexa start Daily Stand Up"
+                    ],
+                    "name": "Daily Stand Up",
+                    "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+                    "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+                },
+                "en-CA": {
+                    "examplePhrases": [
+                        "Alexa open Daily Stand Up",
+                        "Alexa launch Daily Stand Up",
+                        "Alexa start Daily Stand Up"
+                    ],
+                    "name": "Daily Stand Up",
+                    "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+                    "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+                },
+                "en-GB": {
+                    "examplePhrases": [
+                        "Alexa open Daily Stand Up",
+                        "Alexa launch Daily Stand Up",
+                        "Alexa start Daily Stand Up"
+                    ],
+                    "name": "Daily Stand Up",
+                    "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+                    "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+                },
+                "en-IN": {
+                    "examplePhrases": [
+                        "Alexa open Daily Stand Up",
+                        "Alexa launch Daily Stand Up",
+                        "Alexa start Daily Stand Up"
+                    ],
+                    "name": "Daily Stand Up",
+                    "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+                    "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+                },
+                "en-US": {
+                    "examplePhrases": [
+                        "Alexa open Daily Stand Up",
+                        "Alexa launch Daily Stand Up",
+                        "Alexa start Daily Stand Up"
+                    ],
+                    "name": "Daily Stand Up",
+                    "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+                    "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+                },
+                "es-ES": {
+                    "examplePhrases": [
+                        "Alexa lanza Daily Stand Up",
+                        "Alexa comienza Daily Stand Up",
+                        "Daily Stand Up"
+                    ],
+                    "name": "Daily Stand Up",
+                    "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+                    "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+                },
+                "es-MX": {
+                    "examplePhrases": [
+                        "Alexa lanza Daily Stand Up",
+                        "Alexa comienza Daily Stand Up",
+                        "Daily Stand Up"
+                    ],
+                    "name": "Daily Stand Up",
+                    "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+                    "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+                },
+                "es-US": {
+                    "examplePhrases": [
+                        "Alexa lanza Daily Stand Up",
+                        "Alexa comienza Daily Stand Up",
+                        "Daily Stand Up"
+                    ],
+                    "name": "Daily Stand Up",
+                    "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+                    "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+                },
+                "fr-CA": {
+                    "examplePhrases": [
+                        "Alexa lance Stand up",
+                        "Alexa démarre Stand up",
+                        "Stand up quotidien"
+                    ],
+                    "name": "Daily Stand Up",
+                    "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+                    "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+                },
+                "fr-FR": {
+                    "examplePhrases": [
+                        "Alexa lance Stand up",
+                        "Alexa démarre Stand up",
+                        "Stand up quotidien"
+                    ],
+                    "name": "Daily Stand Up",
+                    "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+                    "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+                },
+                "hi-IN": {
+                    "examplePhrases": [
+                        "Alexa दैनिक stand up शुरू करो",
+                        "Alexa दैनिक stand up शुरू करो",
+                        "दैनिक stand up"
+                    ],
+                    "name": "Daily Stand Up",
+                    "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+                    "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+                },
+                "it-IT": {
+                    "examplePhrases": [
+                        "Alexa apri Stand Up",
+                        "Alexa lancia Stand Up",
+                        "Alexa inizia Stand Up"
+                    ],
+                    "name": "Daily Stand Up",
+                    "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+                    "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+                },
+                "ja-JP": {
+                    "examplePhrases": [
+                        "アレクサ、デイリースタンドアップを起動して",
+                        "アレクサ、デイリースタンドアップをスタートして",
+                        "デイリースタンドアップ"
+                    ],
+                    "name": "Daily Stand Up",
+                    "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+                    "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+                },
+                "pt-BR": {
+                    "examplePhrases": [
+                        "Alexa lance Stand up",
+                        "Alexa inicie Stand up",
+                        "Stand Up Diário"
+                    ],
+                    "name": "Daily Stand Up",
+                    "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
+                    "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
+                }
+            }
+        },
+        "manifestVersion": "1.0"
+    }
+}
