@@ -1,0 +1,3 @@
+Alexa Survey Skill Template
+Copyright (c) 2020 Dabble Lab - http://dabblelab.com
+Portions Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
