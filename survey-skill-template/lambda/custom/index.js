@@ -8,8 +8,8 @@
 
 /* 
 * This is an example skill that lets users submit a daily stand up meeting report.
-* The skill owner can set up customers' name, emails address and assign a pin. 
-* The pin will serve as an access mechanism for authorized customers to use the skill. 
+* The skill owner can set up customers' name, emails address and assign a passcode. 
+* The passcode will serve as an access mechanism for authorized customers to use the skill. 
 * The skill owner will get email updates when a customer submits a response. 
 * This template can also be used to run surveys or for other collaboration use-cases.
 */
@@ -73,7 +73,7 @@ const LaunchRequestHandler = {
   },
 };
 
-// This handler validates the user's pin using the values
+// This handler validates the user's passcode using the values
 // in the team.json file.
 const GetCodeIntentHandler = {
   canHandle(handlerInput) {
@@ -216,7 +216,7 @@ const GetReportIntentCompleteHandler = {
 };
 
 // This handler function provides users with information about
-// how to get or reset their PIN
+// how to get or reset their passcode
 const ResetPinIntentHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
@@ -450,7 +450,7 @@ const LocalizationInterceptor = {
 function getUserByPin(userPin) {
   return new Promise(((resolve, reject) => {
     try {
-      const users = usersData.filter((user) => user.pin === userPin);
+      const users = usersData.filter((user) => user.passcode === userPin);
       if (users && users.length > 0) {
         resolve(users[0]);
       } else {
