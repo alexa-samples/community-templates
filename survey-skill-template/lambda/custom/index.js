@@ -199,7 +199,7 @@ const GetReportIntentCompleteHandler = {
     await saveToS3(handlerInput);
 
     // send the report via email if configured
-    if (process.env.SEND_EMAIL) {
+    if (process.env.SEND_EMAIL && process.env.SEND_EMAIL === true) {
       await sendEmail(handlerInput)
         .then(() => {
           speakOutput = requestAttributes.t('EMAIL_SENT');
