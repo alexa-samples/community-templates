@@ -2,28 +2,28 @@ module.exports = {
   translation: {
     'SKILL_NAME': "Daily Stand Up",
     'GREETING': [
-      "Welcome to %s. To continue, please tell me your pin.",
+      "Welcome to %s. To continue, please tell me your passcode.",
     ],
     'GREETING_REPROMPT': [
-      "What is your pin?",
+      "What is your passcode?",
     ],
     'PIN_VALID': [
-      "Okay, your pin is valid.",
+      "Okay, your passcode is valid.",
     ],
     'PIN_INVALID': [
-      "Sorry, that pin is invalid. Please try again. What is your pin?",
+      "Sorry, that passcode is invalid. Please try again. What is your passcode?",
     ],
     'PIN_INVALID_REPROMPT': [
-      "Please try again. What is your pin?",
+      "Please try again. What is your passcode?",
     ],
     'PIN_MAX_ATTEMPTS': [
-      "You\'ve exceeded the maximum pin attempts allowed. Please contact the skill administrator to get or reset your pin. Good bye",
+      "You\'ve exceeded the maximum passcode attempts allowed. Please contact the skill administrator to get or reset your passcode. Good bye",
     ],
     'USER_INVALID': [
-      "Sorry, you need to provide a valid pin to continue. What is your pin?",
+      "Sorry, you need to provide a valid passcode to continue. What is your passcode?",
     ],
     'USER_INVALID_REPROMPT': [
-      "What is your pin?",
+      "What is your passcode?",
     ],
     'EMAIL_SUBJECT': [
       "Stand Up Report for %s",
@@ -45,7 +45,7 @@ module.exports = {
       "Would you like to provide your daily stand up report?",
     ],
     'HELP_PIN': [
-      "If you\'ve lost or forgotten your pin, please contact the skill administrator.",
+      "If you\'ve lost or forgotten your passcode, please contact the skill administrator.",
     ],
     'REFLECTOR': [
       "You just triggered the %s intent. You\'re hearing this response because %s does not have an intent handler yet.",
