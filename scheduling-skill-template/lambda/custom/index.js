@@ -678,29 +678,34 @@ function bookAppointment(handlerInput) {
         // send email to user
         const attachment = Buffer.from(icsData.value);
 
-        const msg = {
-          to: [process.env.NOTIFY_EMAIL, appointmentData.profileEmail],
-          from: process.env.FROM_EMAIL,
-          subject: requestAttributes.t('EMAIL_SUBJECT', appointmentData.profileName, process.env.FROM_NAME),
-          text: requestAttributes.t('EMAIL_TEXT',
-            appointmentData.profileName,
-            process.env.FROM_NAME,
-            appointmentData.profileMobileNumber),
-          attachments: [
-            {
-              content: attachment.toString('base64'),
-              filename: 'appointment.ics',
-              type: 'text/calendar',
-              disposition: 'attachment',
-            },
-          ],
-        };
-
-        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-        sgMail.send(msg).then((result) => {
-          // mail done sending
-          resolve(result);
-        });
+        if (process.env.SEND_EMAIL) {
+          const msg = {
+            to: [process.env.NOTIFY_EMAIL, appointmentData.profileEmail],
+            from: process.env.FROM_EMAIL,
+            subject: requestAttributes.t('EMAIL_SUBJECT', appointmentData.profileName, process.env.FROM_NAME),
+            text: requestAttributes.t('EMAIL_TEXT',
+              appointmentData.profileName,
+              process.env.FROM_NAME,
+              appointmentData.profileMobileNumber),
+            attachments: [
+              {
+                content: attachment.toString('base64'),
+                filename: 'appointment.ics',
+                type: 'text/calendar',
+                disposition: 'attachment',
+              },
+            ],
+          };
+  
+          sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+          sgMail.send(msg).then((result) => {
+            // mail done sending
+            resolve(result);
+          });
+          
+        } else {
+          resolve(true);
+        }
       });
     } catch (ex) {
       console.log(`bookAppointment() ERROR: ${ex.message}`);
