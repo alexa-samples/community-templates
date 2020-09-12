@@ -13,18 +13,18 @@ At this point, you should have a working copy of the Survey/ Stand Up Meeting sk
 
     2. Open **[team.json](../lambda/team.json)**
 
-    3. Create a new user object for each one of your team memebrs. The example below shows what the file would look like with two uers (User One, and User Two). The name and email are just for reporting but the passcode is required to authorize users. Each user should have a unique 4-digit passcode.
+    3. Create a new user object for each one of your team memebrs. The example below shows what the file would look like with two uers (User One, and User Two). The name and email are just for reporting but the passcode is required to authorize users. Each user should have a unique 6-digit passcode.
     ```json
     [
     { 
         "name": "User One",
         "email": "user1@test.com",
-        "passcode": 1111
+        "passcode": 111111
     },
     { 
         "name": "User Two",
         "email": "user2@test.com",
-        "passcode": 1112
+        "passcode": 222222
     }
     ]
     ```

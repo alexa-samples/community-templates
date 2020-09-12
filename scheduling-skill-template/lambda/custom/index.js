@@ -23,6 +23,7 @@ const luxon = require('luxon');
 const ics = require('ics');
 const { google } = require('googleapis');
 const sgMail = require('@sendgrid/mail');
+require('dotenv').config();
 
 /* CONSTANTS */
 // To set constants, change the value in .env.sample then
@@ -116,6 +117,7 @@ const StartedInProgressScheduleAppointmentIntentHandler = {
     return request.type === 'IntentRequest'
       && request.intent.name === 'ScheduleAppointmentIntent'
       && request.dialogState !== 'COMPLETED';
+
   },
   async handle(handlerInput) {
     const currentIntent = handlerInput.requestEnvelope.request.intent;
@@ -176,6 +178,7 @@ const CompletedScheduleAppointmentIntentHandler = {
     // get timezone
     const { deviceId } = handlerInput.requestEnvelope.context.System.device;
     const userTimezone = await upsServiceClient.getSystemTimeZone(deviceId);
+    // const userTimezone = 'Asia/Yerevan';
 
     // get slots
     const appointmentDate = currentIntent.slots.appointmentDate;
@@ -224,7 +227,7 @@ const CompletedScheduleAppointmentIntentHandler = {
     handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
 
     // schedule without freebusy check
-    if (!process.env.CHECK_FREEBUSY) {
+    if ( process.env.CHECK_FREEBUSY === 'false' ) {
       await bookAppointment(handlerInput);
 
       const speakOutput = requestAttributes.t('APPOINTMENT_CONFIRM_COMPLETED', process.env.FROM_NAME, speakDateTimeLocal);
@@ -236,34 +239,35 @@ const CompletedScheduleAppointmentIntentHandler = {
         )
         .speak(speakOutput)
         .getResponse();
-    }
+    } else if ( process.env.CHECK_FREEBUSY === 'true' ) {
 
-    // check if the request time is available
-    const isTimeSlotAvailable = await checkAvailability(startTimeUtc, endTimeUtc, userTimezone);
+      // check if the request time is available
+      const isTimeSlotAvailable = await checkAvailability(startTimeUtc, endTimeUtc, userTimezone);
 
-    // schedule with freebusy check
-    if (isTimeSlotAvailable) {
-      await bookAppointment(handlerInput);
+      // schedule with freebusy check
+      if (isTimeSlotAvailable) {
+        await bookAppointment(handlerInput);
 
-      const speakOutput = requestAttributes.t('APPOINTMENT_CONFIRM_COMPLETED', process.env.FROM_NAME, speakDateTimeLocal);
+        const speakOutput = requestAttributes.t('APPOINTMENT_CONFIRM_COMPLETED', process.env.FROM_NAME, speakDateTimeLocal);
+
+        return handlerInput.responseBuilder
+          .withSimpleCard(
+            requestAttributes.t('APPOINTMENT_TITLE', process.env.FROM_NAME),
+            requestAttributes.t('APPOINTMENT_CONFIRM_COMPLETED', process.env.FROM_NAME, speakDateTimeLocal),
+          )
+          .speak(speakOutput)
+          .getResponse();
+      }
+
+      // time requested is not available so prompt to pick another time
+      const speakOutput = requestAttributes.t('TIME_NOT_AVAILABLE', speakDateTimeLocal);
+      const speakReprompt = requestAttributes.t('TIME_NOT_AVAILABLE_REPROMPT', speakDateTimeLocal);
 
       return handlerInput.responseBuilder
-        .withSimpleCard(
-          requestAttributes.t('APPOINTMENT_TITLE', process.env.FROM_NAME),
-          requestAttributes.t('APPOINTMENT_CONFIRM_COMPLETED', process.env.FROM_NAME, speakDateTimeLocal),
-        )
         .speak(speakOutput)
+        .reprompt(speakReprompt)
         .getResponse();
     }
-
-    // time requested is not available so promot to pick another time
-    const speakOutput = requestAttributes.t('TIME_NOT_AVAILABLE', speakDateTimeLocal);
-    const speakReprompt = requestAttributes.t('TIME_NOT_AVAILABLE_REPROMPT', speakDateTimeLocal);
-
-    return handlerInput.responseBuilder
-      .speak(speakOutput)
-      .reprompt(speakReprompt)
-      .getResponse();
   },
 };
 
@@ -627,6 +631,7 @@ function bookAppointment(handlerInput) {
   return new Promise(((resolve, reject) => {
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
     const requestAttributes = handlerInput.attributesManager.getRequestAttributes();
+
     try {
       const appointmentData = sessionAttributes.appointmentData;
       const userTime = luxon.DateTime.fromISO(appointmentData.appointmentDateTime,
@@ -676,31 +681,38 @@ function bookAppointment(handlerInput) {
 
       s3.putObject(s3Params, () => {
         // send email to user
-        const attachment = Buffer.from(icsData.value);
-
-        const msg = {
-          to: [process.env.NOTIFY_EMAIL, appointmentData.profileEmail],
-          from: process.env.FROM_EMAIL,
-          subject: requestAttributes.t('EMAIL_SUBJECT', appointmentData.profileName, process.env.FROM_NAME),
-          text: requestAttributes.t('EMAIL_TEXT',
-            appointmentData.profileName,
-            process.env.FROM_NAME,
-            appointmentData.profileMobileNumber),
-          attachments: [
-            {
-              content: attachment.toString('base64'),
-              filename: 'appointment.ics',
-              type: 'text/calendar',
-              disposition: 'attachment',
-            },
-          ],
-        };
-
-        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-        sgMail.send(msg).then((result) => {
-          // mail done sending
-          resolve(result);
-        });
+        
+        if ( process.env.SEND_EMAIL === 'true' ) {
+          console.log('DEGUB ' + typeof process.env.SEND_EMAIL)
+          const attachment = Buffer.from(icsData.value);
+          
+          const msg = {
+            to: [process.env.NOTIFY_EMAIL, appointmentData.profileEmail],
+            from: process.env.FROM_EMAIL,
+            subject: requestAttributes.t('EMAIL_SUBJECT', appointmentData.profileName, process.env.FROM_NAME),
+            text: requestAttributes.t('EMAIL_TEXT',
+              appointmentData.profileName,
+              process.env.FROM_NAME,
+              appointmentData.profileMobileNumber),
+            attachments: [
+              {
+                content: attachment.toString('base64'),
+                filename: 'appointment.ics',
+                type: 'text/calendar',
+                disposition: 'attachment',
+              },
+            ],
+          };
+  
+          sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+          sgMail.send(msg).then((result) => {
+            // mail done sending
+            resolve(result);
+          });
+          
+        } else {
+          resolve(true);
+        }
       });
     } catch (ex) {
       console.log(`bookAppointment() ERROR: ${ex.message}`);
