@@ -410,6 +410,26 @@ const CancelAndStopIntentHandler = {
   },
 };
 
+// This function handles utterances that can't be matched to any
+// other intent handler.
+const FallbackIntentHandler = {
+  canHandle(handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+      && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.FallbackIntent';
+  },
+  handle(handlerInput) {
+    const requestAttributes = handlerInput.attributesManager.getRequestAttributes();
+
+    const speakOutput = requestAttributes.t('FALLBACK');
+    const repromptOutput = requestAttributes.t('FALLBACK_REPROMPT');
+
+    return handlerInput.responseBuilder
+      .speak(speakOutput)
+      .reprompt(repromptOutput)
+      .getResponse();
+  },
+};
+
 const SessionEndedRequestHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'SessionEndedRequest';
@@ -738,6 +758,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     NoIntentHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
+    FallbackIntentHandler,
     SessionEndedRequestHandler,
     IntentReflectorHandler,
   )
