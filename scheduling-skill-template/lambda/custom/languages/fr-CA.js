@@ -31,6 +31,12 @@ module.exports = {
       'Au revoir',
       'D\'accord. Je serai ici si vous avez besoin de moi.',
     ],
+    FALLBACK: [
+      'Vous pouvez dire: vous voulez prendre rendez-vous, ou que vous avez une demande de rendez-vous. Voulez-vous prendre un rendez-vous?',
+    ],
+    FALLBACK_REPROMPT: [
+      'Voulez-vous prendre un rendez-vous?',
+    ],
     APPOINTMENT_CONFIRM: [
       'J\'ai  programmé votre  rendez-vous avec %s pour le %s. Souhaitez-vous le confirmer ?',
     ],
