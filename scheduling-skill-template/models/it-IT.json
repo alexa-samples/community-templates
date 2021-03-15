@@ -19,6 +19,10 @@
                     "name": "AMAZON.StopIntent",
                     "samples": []
                 },
+                                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
                 {
                     "name": "ScheduleAppointmentIntent",
                     "slots": [
