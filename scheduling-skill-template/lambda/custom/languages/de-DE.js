@@ -31,6 +31,12 @@ module.exports = {
       'Bis bald',
       'Okay. Ich werde hier sein, wenn du mich brauchst.',
     ],
+    FALLBACK: [
+      'Du kannst sagen: du möchtest einen termin vereinbaren oder dass du eine terminanfrage senden möchtest. Möchtest du einen termin vereinbaren?',
+    ],
+    FALLBACK_REPROMPT: [
+      'Möchtest du einen termin vereinbaren?',
+    ],
     APPOINTMENT_CONFIRM: [
       'Ich habe deine Terminanfrage mit %s für %s  festgelegt. Möchtest du diese Anfrage bestätigen?',
     ],
