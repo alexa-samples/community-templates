@@ -31,6 +31,12 @@ module.exports = {
       'Adiós',
       'Bueno. Estaré aquí si me necesitas.',
     ],
+    FALLBACK: [
+      'Puedes decir: que quieres hacer una cita o que tienes una solicitud de cita para hacer. ¿Quieres hacer una cita?',
+    ],
+    FALLBACK_REPROMPT: [
+      '¿Quieres hacer una cita?',
+    ],
     APPOINTMENT_CONFIRM: [
       'Tengo tu solicitud de cita con %s configurado para %s. ¿Deseas confirmar esta solicitud?',
     ],
