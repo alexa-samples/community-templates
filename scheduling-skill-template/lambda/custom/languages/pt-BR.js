@@ -31,6 +31,11 @@ module.exports = {
       'Tchau',
       'Ok, estarei aqui se precisar de mim.',
     ],
+    FALLBACK: ['Você pode dizer: você gostaria de agendar um compromisso, ou que, você tem um compromisso para agendar. Você gostaria de agendar um compromisso?',
+    ],
+    FALLBACK_REPROMPT: [
+      'Você gostaria de agendar um compromisso?',
+    ],
     APPOINTMENT_CONFIRM: [
       'Você está solicitando uma consulta com %s para %s. Posso confirmar?',
     ],
