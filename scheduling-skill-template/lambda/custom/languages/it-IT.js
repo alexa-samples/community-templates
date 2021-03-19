@@ -31,6 +31,12 @@ module.exports = {
       'Arrivederci',
       'Va bene. Sarò qua se hai bisogno di me. ',
     ],
+    FALLBACK: [
+      'Puoi dire: vorrei fissare un appuntamento, oppure devo prendere un appuntamento. Vorresti fissare un appuntamento?',
+    ],
+    FALLBACK_REPROMPT: [
+      'Vorresti fissare un appuntamento?',
+    ],
     APPOINTMENT_CONFIRM: [
       'Ho la tua richiesta di appuntamento con %s programmata per %s. Desideri confermare la richiesta?',
     ],

@@ -31,6 +31,12 @@ module.exports = {
       'Good bye',
       'Okay. I\'ll be here if you need me.',
     ],
+    FALLBACK: [
+      'You can say: you would like to schedule an appointment or that you have an appointment request to make. Would you like to schedule an appointment?',
+    ],
+    FALLBACK_REPROMPT: [
+      'Would you like to schedule an appointment?',
+    ],
     APPOINTMENT_CONFIRM: [
       'I have your appointment request with %s set for %s. Would you like to confirm this request?',
     ],

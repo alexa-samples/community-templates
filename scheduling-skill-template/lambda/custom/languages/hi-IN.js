@@ -31,6 +31,12 @@ module.exports = {
       'अलविदा',
       'ठीक है। अगर आपको मेरी जरूरत होगी तो मैं यहां रहूंगा।',
     ],
+    FALLBACK: [
+        'आप कह सकते है: आप appointment schedule करना चाहते हैं या आपको एक appointment अनुरोध बनवाना है । क्या आप appointment schedule करना चाहेंगे ?',
+    ],
+    FALLBACK_REPROMPT: [
+      'क्या आप appointment schedule करना चाहेंगे ?',
+    ],
     APPOINTMENT_CONFIRM: [
       'मेरा %s के लिए %s सेट के साथ आपका नियुक्ति अनुरोध है। क्या आप इस अनुरोध की पुष्टि करना चाहेंगे?',
     ],
