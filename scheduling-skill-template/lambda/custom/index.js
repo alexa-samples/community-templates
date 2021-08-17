@@ -23,6 +23,7 @@ const luxon = require('luxon');
 const ics = require('ics');
 const { google } = require('googleapis');
 const sgMail = require('@sendgrid/mail');
+const personalization = require('./personalizationUtil');
 require('dotenv').config();
 
 /* CONSTANTS */
@@ -101,7 +102,7 @@ const LaunchRequestHandler = {
   handle(handlerInput) {
     const requestAttributes = handlerInput.attributesManager.getRequestAttributes();
 
-    const speakOutput = requestAttributes.t('GREETING', requestAttributes.t('SKILL_NAME'));
+    const speakOutput = requestAttributes.t('GREETING', personalization.getPersonalizedPrompt(handlerInput) , requestAttributes.t('SKILL_NAME'));
     const repromptOutput = requestAttributes.t('GREETING_REPROMPT');
 
     return handlerInput.responseBuilder

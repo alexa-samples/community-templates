@@ -2,9 +2,9 @@ module.exports = {
   translation: {
     SKILL_NAME: 'Agendador de Consultas',
     GREETING: [
-      'Olá. Boas vindas ao %s. Você gostaria de agendar uma consulta?',
-      'Oi. Boas vindas ao %s. Você gostaria de agendar uma consulta?',
-      'Oi. Boas vindas ao %s. Você gostaria de agendar uma consulta?',
+      'Olá %s. Boas vindas ao %s. Você gostaria de agendar uma consulta?',
+      'Oi %s. Boas vindas ao %s. Você gostaria de agendar uma consulta?',
+      'Oi %s. Boas vindas ao %s. Você gostaria de agendar uma consulta?',
     ],
     GREETING_REPROMPT: [
       'Você gostaria de agendar uma consulta?',

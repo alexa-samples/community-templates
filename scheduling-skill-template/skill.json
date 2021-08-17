@@ -15,6 +15,9 @@
       },
       {
         "name": "alexa::profile:mobile_number:read"
+      },
+      {
+        "name": "alexa::person_id:read"
       }
     ],
     "publishingInformation": {

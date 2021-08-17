@@ -2,9 +2,9 @@ module.exports = {
   translation: {
     SKILL_NAME: 'Terminplaner',
     GREETING: [
-      'Hallo. Willkommen zu %s. Möchtest du einen Termin planen?',
-      'Hi. Willkommen zu %s. Möchtest du einen Termin planen?',
-      'Na du. Möchtest du einen Termin planen?',
+      'Hallo %s. Willkommen zu %s. Möchtest du einen Termin planen?',
+      'Hi %s. Willkommen zu %s. Möchtest du einen Termin planen?',
+      'Na du %s. Möchtest du einen Termin planen?',
     ],
     GREETING_REPROMPT: [
       'Möchtest du einen Termin planen?',

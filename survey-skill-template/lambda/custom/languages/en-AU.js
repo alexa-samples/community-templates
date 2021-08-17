@@ -2,8 +2,14 @@ module.exports = {
   translation: {
     'SKILL_NAME': "Daily Stand Up",
     'GREETING': [
-      "Welcome to %s. To continue, please tell me your passcode.",
+      "Welcome to %s. To continue, please say \"start my stand up\".",
     ],
+    'PERSONALIZED_GREETING': [
+      "Hello %s",
+    ],
+    'PERSONALIZED_FALLBACK': [
+      "Sorry, I am unable to recognize you. To continue, please tell me your passcode.",
+    ],    
     'GREETING_REPROMPT': [
       "What is your passcode?",
     ],

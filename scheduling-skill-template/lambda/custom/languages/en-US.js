@@ -2,9 +2,9 @@ module.exports = {
   translation: {
     SKILL_NAME: 'Appointment Scheduler',
     GREETING: [
-      'Hello. Welcome to %s. Would you like to schedule an appointment?',
-      'Hi. Welcome to %s. Would you like to schedule an appointment?',
-      'Hey there. Welcome to %s. Would you like to schedule an appointment?',
+      'Hello %s. Welcome to %s. Would you like to schedule an appointment?',
+      'Hi %s. Welcome to %s. Would you like to schedule an appointment?',
+      'Hey there %s. Welcome to %s. Would you like to schedule an appointment?',
     ],
     GREETING_REPROMPT: [
       'Would you like to schedule an appointment?',

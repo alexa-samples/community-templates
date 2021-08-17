@@ -3,11 +3,17 @@ module.exports = {
   translation: {
     'SKILL_NAME': "Stand Up Diário",
     'GREETING': [
-      "Boas vindas ao %s. Para continuar, por favor forneça sua senha.",
+      "Bem-vindo a% s. Para continuar, por favor diga \"comece minha postura\".",
     ],
     'GREETING_REPROMPT': [
       "Qual é a sua senha?",
     ],
+    'PERSONALIZED_GREETING': [
+      "Olá %s",
+    ],
+    'PERSONALIZED_FALLBACK': [
+      "Desculpe, não consigo reconhecê-lo. Para continuar, diga-me sua senha.",
+    ], 
     'PIN_VALID': [
       "Ok, sua senha é válida",
     ],

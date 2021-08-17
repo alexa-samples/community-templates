@@ -3,11 +3,17 @@ module.exports = {
   translation: {
     'SKILL_NAME': "デイリースタンドアップ",
     'GREETING': [
-      "%s へようこそ。アンショウバンゴウを教えてください",
+      "％s へようこそ。続行するには, please say \"私のスタンドアップを開始します\".",
     ],
     'GREETING_REPROMPT': [
       "アンショウバンゴウを教えてください",
     ],
+    'PERSONALIZED_GREETING': [
+      "こんにちは %s",
+    ],
+    'PERSONALIZED_FALLBACK': [
+      "申し訳ありませんが、あなたを認識できません。続行するには、パスコードを教えてください",
+    ], 
     'PIN_VALID': [
       "アンショウバンゴウは有効です。",
     ],
