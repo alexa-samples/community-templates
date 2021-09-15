@@ -98,7 +98,7 @@ const StartMyStandupIntentHandler = {
           .addDelegateDirective({
             name: 'GetReportIntent',
             confirmationStatus: 'NONE',
-            slots: {}, Î
+            slots: {},
           });
       } catch (err) {
         speakOutput = requestAttributes.t('PERSONALIZED_FALLBACK')
