@@ -21,6 +21,7 @@ const i18n = require('i18next');
 const sprintf = require('i18next-sprintf-postprocessor');
 const luxon = require('luxon');
 const sgMail = require('@sendgrid/mail');
+const personalization = require('./personalizationUtil')
 
 // edit the team.json file to add uer pins
 const usersData = require('./team.json');
@@ -70,6 +71,45 @@ const LaunchRequestHandler = {
       .speak(speakOutput)
       .reprompt(repromptOutput)
       .getResponse();
+  },
+};
+
+const StartMyStandupIntentHandler = {
+  canHandle(handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+      && handlerInput.requestEnvelope.request.intent.name === 'StartMyStandupIntent';
+  },
+  async handle(handlerInput) {
+    const requestAttributes = handlerInput.attributesManager.getRequestAttributes();
+    let speakOutput;
+    const repromptOutput = requestAttributes.t('GREETING_REPROMPT');
+    let response = handlerInput.responseBuilder;
+    const person = personalization.getPerson(handlerInput);
+    if (person) {
+      try {
+        speakOutput = requestAttributes.t('PERSONALIZED_GREETING', personalization.getPersonalizedPrompt(handlerInput));
+        const upsServiceClient = handlerInput.serviceClientFactory.getUpsServiceClient();
+        const profileEmail = await upsServiceClient.getProfileEmail();
+        const profileName = await upsServiceClient.getProfileName();
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+        sessionAttributes.userEmail = profileEmail;
+        sessionAttributes.userName = profileName;
+        response
+          .addDelegateDirective({
+            name: 'GetReportIntent',
+            confirmationStatus: 'NONE',
+            slots: {},
+          });
+      } catch (err) {
+        speakOutput = requestAttributes.t('PERSONALIZED_FALLBACK')
+      }
+    } else {
+      speakOutput = requestAttributes.t('PERSONALIZED_FALLBACK')
+    }
+    return response
+      .speak(speakOutput)
+      .reprompt(repromptOutput)
+      .getResponse()
   },
 };
 
@@ -531,6 +571,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     GetCodeIntentHandler,
     GetReportIntentNotCompleteHandler,
     GetReportIntentCompleteHandler,
+    StartMyStandupIntentHandler,
     YesNoIntentHandler,
     ResetPinIntentHandler,
     HelpIntentHandler,

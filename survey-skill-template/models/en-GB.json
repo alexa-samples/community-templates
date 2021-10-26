@@ -93,6 +93,13 @@
                         "i need a new pin",
                         "i forgot my pin"
                     ]
+                },
+                {
+                    "name": "StartMyStandupIntent",
+                    "slots": [],
+                    "samples": [
+                        "start my stand up"
+                    ]
                 }
             ],
             "types": []

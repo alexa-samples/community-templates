@@ -2,9 +2,9 @@ module.exports = {
   translation: {
     SKILL_NAME: 'Logiciel de prise de rendez-vous',
     GREETING: [
-      'Bonjour. Bienvenue sur %s. Souhaitez-vous créer un rendez-vous?',
-      'Salut. Bienvenue sur %s. Souhaitez-vous créer un rendez-vous?',
-      'Coucou. Bienvenue sur %s. Souhaitez-vous créer un rendez-vous?',
+      'Bonjour %s. Bienvenue sur %s. Souhaitez-vous créer un rendez-vous?',
+      'Salut %s. Bienvenue sur %s. Souhaitez-vous créer un rendez-vous?',
+      'Coucou %s. Bienvenue sur %s. Souhaitez-vous créer un rendez-vous?',
     ],
     GREETING_REPROMPT: [
       'Souhaitez-vous créer un rendez-vous?',

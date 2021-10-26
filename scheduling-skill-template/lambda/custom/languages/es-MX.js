@@ -2,9 +2,9 @@ module.exports = {
   translation: {
     SKILL_NAME: 'Programador de citas',
     GREETING: [
-      'días. Bienvenido a %s. ¿Te gustaría programar una cita?',
-      'Hola. Bienvenido a %s. ¿Te gustaría programar una cita?',
-      'Hola. Bienvenido a %s. ¿Te gustaría programar una cita?',
+      'días %s. Bienvenido a %s. ¿Te gustaría programar una cita?',
+      'Hola %s. Bienvenido a %s. ¿Te gustaría programar una cita?',
+      'Hola %s. Bienvenido a %s. ¿Te gustaría programar una cita?',
     ],
     GREETING_REPROMPT: [
       '¿Te gustaría programar una cita?',

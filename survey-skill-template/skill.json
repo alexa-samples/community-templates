@@ -6,6 +6,17 @@
                 "interfaces": []
             }
         },
+        "permissions": [
+            {
+                "name": "alexa::profile:name:read"
+            },
+            {
+                "name": "alexa::profile:email:read"
+            },
+            {
+                "name": "alexa::person_id:read"
+            }
+        ],
         "publishingInformation": {
             "locales": {
                 "de-DE": {
