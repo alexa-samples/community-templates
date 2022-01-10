@@ -21,7 +21,8 @@ const i18n = require('i18next');
 const sprintf = require('i18next-sprintf-postprocessor');
 const luxon = require('luxon');
 const sgMail = require('@sendgrid/mail');
-const personalization = require('./personalizationUtil')
+const personalization = require('./personalizationUtil');
+const voiceConsent = require('./voiceConsentUtil');
 
 // edit the team.json file to add uer pins
 const usersData = require('./team.json');
@@ -64,7 +65,13 @@ const LaunchRequestHandler = {
     const requestAttributes = handlerInput.attributesManager.getRequestAttributes();
 
     const skillName = requestAttributes.t('SKILL_NAME');
-    const speakOutput = requestAttributes.t('GREETING', skillName);
+    const name = personalization.getPersonalizedPrompt(handlerInput);
+    var speakOutput = ""
+    if (name && name.length > 0) {
+        speakOutput = requestAttributes.t('GREETING_PERSONALIZED', skillName);
+    } else {
+        speakOutput = requestAttributes.t('GREETING', skillName);
+    }
     const repromptOutput = requestAttributes.t('GREETING_REPROMPT');
 
     return handlerInput.responseBuilder
@@ -82,36 +89,52 @@ const StartMyStandupIntentHandler = {
   async handle(handlerInput) {
     const requestAttributes = handlerInput.attributesManager.getRequestAttributes();
     let speakOutput;
-    const repromptOutput = requestAttributes.t('GREETING_REPROMPT');
+    const name = personalization.getPersonalizedPrompt(handlerInput);
     let response = handlerInput.responseBuilder;
-    const person = personalization.getPerson(handlerInput);
-    if (person) {
-      try {
-        speakOutput = requestAttributes.t('PERSONALIZED_GREETING', personalization.getPersonalizedPrompt(handlerInput));
+    if (name && name.length > 0) {
+        speakOutput = requestAttributes.t('PERSONALIZED_GREETING', name);
         const upsServiceClient = handlerInput.serviceClientFactory.getUpsServiceClient();
-        const profileEmail = await upsServiceClient.getProfileEmail();
-        const profileName = await upsServiceClient.getProfileName();
+        let profileName
+        let profileEmail
+        try {
+            profileName = await upsServiceClient.getPersonsProfileGivenName();
+            profileEmail = await upsServiceClient.getProfileEmail();
+        } catch (error) {
+            return handleError(error, handlerInput)
+        }
+
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         sessionAttributes.userEmail = profileEmail;
         sessionAttributes.userName = profileName;
+        handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
+
         response
           .addDelegateDirective({
             name: 'GetReportIntent',
             confirmationStatus: 'NONE',
             slots: {},
           });
-      } catch (err) {
-        speakOutput = requestAttributes.t('PERSONALIZED_FALLBACK')
-      }
     } else {
       speakOutput = requestAttributes.t('PERSONALIZED_FALLBACK')
     }
+    const repromptOutput = requestAttributes.t('GREETING_REPROMPT');
     return response
       .speak(speakOutput)
       .reprompt(repromptOutput)
       .getResponse()
   },
 };
+
+function handleError(error, handlerInput) {
+    console.log('getPersonsProfileGivenName or getProfileEmail: error with status code: ' + error.statusCode);
+    if (error.statusCode === 403) {
+        ///no consent at account level, indicate to the caller
+        let emailPermissionScope = new voiceConsent.RequestedPermission("alexa::profile:email:read", voiceConsent.CONSENT_LEVEL.ACCOUNT);
+        let namePermissionScope = new voiceConsent.RequestedPermission("alexa::profile:given_name:read", voiceConsent.CONSENT_LEVEL.PERSON);
+        return voiceConsent.getVoiceConsentPermissionRequest(handlerInput, [namePermissionScope, emailPermissionScope])
+            .getResponse();
+    }
+}
 
 // This handler validates the user's passcode using the values
 // in the team.json file.
@@ -130,7 +153,7 @@ const GetCodeIntentHandler = {
     const pinAttempts = sessionAttributes.pinAttempts || 1;
 
     let speakOutput = requestAttributes.t('PIN_VALID');
-    const repromptOutput = requestAttributes.t('PIN_VALID_REPROMPT');
+    const repromptOutput = requestAttributes.t('PIN_INVALID_REPROMPT');
 
     if (pinAttempts > 2) {
       speakOutput = requestAttributes.t('PIN_MAX_ATTEMPTS');
@@ -344,7 +367,19 @@ const FallbackIntentHandler = {
       && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.FallbackIntent';
   },
   handle(handlerInput) {
+    const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
     const requestAttributes = handlerInput.attributesManager.getRequestAttributes();
+
+    // make sure the user is validated
+    if (!sessionAttributes.userEmail) {
+      const speakOutput = requestAttributes.t('USER_INVALID');
+      const repromptOutput = requestAttributes.t('USER_INVALID_REPROMPT');
+
+      return handlerInput.responseBuilder
+        .speak(speakOutput)
+        .reprompt(repromptOutput)
+        .getResponse();
+    }
 
     const speakOutput = requestAttributes.t('FALLBACK');
     const repromptOutput = requestAttributes.t('FALLBACK_REPROMPT');
@@ -502,6 +537,39 @@ function getUserByPin(userPin) {
   }));
 }
 
+/**
+ * Voice consent request - response is handled via Skill Connections.
+ * Hence we need to handle async response from the Voice Consent.
+ * The user could have accepted or rejected or skipped the voice consent request.
+ * Create your custom callBackFunction to handle accepted flow - in this case its handling identifying the person
+ * The rejected/skipped default handling is taken care by the library.
+ *
+ * @params handlerInput - the handlerInput received from the IntentRequest
+ * @returns
+ **/
+async function handleCallBackForVoiceConsentAccepted(handlerInput) {
+    const upsServiceClient = handlerInput.serviceClientFactory.getUpsServiceClient();
+    let profileName = await upsServiceClient.getProfileEmail();
+    let profileEmail = await upsServiceClient.getPersonsProfileGivenName();
+    const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+    sessionAttributes.userEmail = profileEmail;
+    sessionAttributes.userName = profileName;
+    handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
+
+    // this is done because currently intent chaining is not supported from any
+    // Skill Connections requests, such as SessionResumedRequest.
+    const requestAttributes = handlerInput.attributesManager.getRequestAttributes();
+    const name = personalization.getPersonalizedPrompt(handlerInput);
+    let speakOutput = requestAttributes.t('PERSONALIZED_GREETING', name) + " " + requestAttributes.t('ABOUT_REPROMPT');
+    let repromptOutput = requestAttributes.t('ABOUT_REPROMPT');
+
+    let response = handlerInput.responseBuilder;
+    return response
+            .speak(speakOutput)
+            .reprompt(repromptOutput)
+            .getResponse()
+}
+
 // This function saves a copy of the stand up report to S3
 // the report is located in the 'reports/yyyy-mm-dd/' folder
 // where 'yyyy-mm-dd' is the data the reports was created
@@ -579,6 +647,10 @@ exports.handler = Alexa.SkillBuilders.custom()
     SessionEndedRequestHandler,
     FallbackIntentHandler,
     IntentReflectorHandler,
+
+    //handler that handles skill response for voice consent
+    //Since voice consent is async, the call back is handled via handleCallBackForVoiceConsentAccepted
+    new voiceConsent.SessionResumedRequestHandler(handleCallBackForVoiceConsentAccepted)
   )
   .addRequestInterceptors(
     EnvironmentCheckInterceptor,

@@ -2,14 +2,17 @@ module.exports = {
   translation: {
     'SKILL_NAME': "Daily Stand Up",
     'GREETING': [
+      "Welcome to %s. To continue, please tell me your passcode.",
+    ],
+    'GREETING_PERSONALIZED': [
       "Welcome to %s. To continue, please say \"start my stand up\".",
     ],
     'PERSONALIZED_GREETING': [
-      "Hello %s",
+      "Hello %s.",
     ],
     'PERSONALIZED_FALLBACK': [
       "Sorry, I am unable to recognize you. To continue, please tell me your passcode.",
-    ],    
+    ],
     'GREETING_REPROMPT': [
       "What is your passcode?",
     ],
@@ -81,5 +84,11 @@ module.exports = {
     'ENV_NOT_CONFIGURED': "One or more environment variables is not set. Please see the readme file for help.",
     'ERROR': "Sorry, I didn\'t get that. Could you say that again?",
     'ERROR_REPROMPT': "Could you say that again?",
+    'VOICE_CONSENT_DENIED_REPROMPT': [
+        "Please visit the app to grant permissions.",
+    ],
+    'VOICE_CONSENT_ERROR_REPROMPT': [
+        "Something went wrong. Please try again later.",
+    ],
   },
 };

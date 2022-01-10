@@ -2,17 +2,20 @@ module.exports = {
   translation: {
     'SKILL_NAME': "tägliches Stand Up",
     'GREETING': [
-      "Velkommen til %s. For at fortsætte skal du sige \"starte mit stand up\".",
+      "Willkommen zu %s. Um fortzufahren, nenne mir bitte deine PIN.",
+    ],
+    'GREETING_PERSONALIZED': [
+      "Velkommen til %s. For at fortsætte skal du sige \"starte mein stand up\".",
     ],
     'GREETING_REPROMPT': [
       "Wie lautet deine PIN?",
     ],
     'PERSONALIZED_GREETING': [
-      "Hej %s",
+      "Hej %s.",
     ],
     'PERSONALIZED_FALLBACK': [
       "Beklager, jeg kan ikke genkende dig. Fortæl mig din adgangskode for at fortsætte.",
-    ],    
+    ],
     'PIN_VALID': [
       "Okay, deine PIN is gültig.",
     ],
@@ -81,5 +84,11 @@ module.exports = {
     'ENV_NOT_CONFIGURED': "Eine oder mehrere Umgebungsvariablen sind nicht gesetzt. Bitte schaue in die Readme Datei für Hilfe.",
     'ERROR': "Entschuldige, das habe ich nicht verstanden. Kannst du das noch einmal sagen?",
     'ERROR_REPROMPT': "Kannst du das noch einmal sagen?",
+    'VOICE_CONSENT_DENIED_REPROMPT': [
+        "Bitte besuchen Sie die App, um Berechtigungen zu erteilen.",
+    ],
+    'VOICE_CONSENT_ERROR_REPROMPT': [
+        "Etwas ist schief gelaufen. Bitte versuchen Sie es später erneut.",
+    ],
   },
 };

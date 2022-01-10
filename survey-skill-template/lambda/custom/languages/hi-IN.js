@@ -3,17 +3,20 @@ module.exports = {
   translation: {
     'SKILL_NAME': "Daily Stand Up",
     'GREETING': [
+      "%s में स्वागत है। जारी रखने के लिए, कृपया मुझे अपना pin  बताएं।",
+    ],
+    'GREETING_PERSONALIZED': [
       "%s में आपका स्वागत है। जारी रखने के लिए, कृपया कहें \"मेरा स्टैंड अप शुरू करो\".",
     ],
     'GREETING_REPROMPT': [
       "तुम्हारा pin  क्या है?",
     ],
     'PERSONALIZED_GREETING': [
-      "नमस्ते %s",
+      "नमस्ते %s।",
     ],
     'PERSONALIZED_FALLBACK': [
       "क्षमा करें, मैं आपको पहचानने में असमर्थ हूँ। जारी रखने के लिए, कृपया मुझे अपना पासकोड बताएं।",
-    ], 
+    ],
     'PIN_VALID': [
       "ठीक है, आपका pin मान्य है।",
     ],
@@ -82,5 +85,11 @@ module.exports = {
     'ENV_NOT_CONFIGURED': "एक या अधिक environment variable set नहीं है। कृपया मदद के लिए readme file देखें।",
     'ERROR': "क्षमा करें, मुझे वह नहीं मिला। क्या आप यह फिर से कह सकते हैं?",
     'ERROR_REPROMPT': "क्या आप यह फिर से कह सकते हैं?",
+    'VOICE_CONSENT_DENIED_REPROMPT': [
+       "अनुमति देने के लिए कृपया ऐप पर जाएं।",
+     ],
+     'VOICE_CONSENT_ERROR_REPROMPT': [
+       "कुछ गलत हो गया। बाद में पुन: प्रयास करें।",
+     ],
   },
 };
