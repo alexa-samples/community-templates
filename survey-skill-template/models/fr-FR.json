@@ -24,7 +24,7 @@
                     "slots": [
                         {
                             "name": "MeetingCode",
-                            "type": "AMAZON.FOUR_DIGIT_NUMBER"
+                            "type": "AMAZON.NUMBER"
                         }
                     ],
                     "samples": [
@@ -62,8 +62,7 @@
                         "{questionToday} aujourd'hui",
                         "{questionYesterday} hier",
                         "hier {questionYesterday}",
-                        "aujourd'hui {questionToday}",
-                        "commencer mon stand up"
+                        "aujourd'hui {questionToday}"
                     ]
                 },
                 {
@@ -87,6 +86,13 @@
                         "comment obtenir un pin.",
                         "J'ai besoin d'un nouveau pin",
                         "j'ai oublié mon pin"
+                    ]
+                },
+                {
+                    "name": "StartMyStandupIntent",
+                    "slots": [],
+                    "samples": [
+                        "commencer mon stand up"
                     ]
                 }
             ],

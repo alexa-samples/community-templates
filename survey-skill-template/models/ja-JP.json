@@ -24,7 +24,7 @@
                     "slots": [
                         {
                             "name": "MeetingCode",
-                            "type": "AMAZON.FOUR_DIGIT_NUMBER"
+                            "type": "AMAZON.NUMBER"
                         }
                     ],
                     "samples": [
@@ -62,8 +62,7 @@
                         "今日の {questionToday}",
                         "昨日の {questionYesterday}",
                         "昨日の {questionToday}",
-                        "今日の {questionYesterday}",
-                        "スタンドアップを開始する"
+                        "今日の {questionYesterday}"
                     ]
                 },
                 {
@@ -87,6 +86,13 @@
                         "ピンコードはどうやって取得しますか",
                         "新しいピンコードをください",
                         "ピンコードを忘れました"
+                    ]
+                },
+                {
+                    "name": "StartMyStandupIntent",
+                    "slots": [],
+                    "samples": [
+                        "私のスタンドアップを開始します"
                     ]
                 }
             ],
