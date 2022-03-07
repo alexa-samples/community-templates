@@ -247,7 +247,6 @@
           "smallIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-sm.png",
           "largeIconUri": "https://s3.amazonaws.com/cdn.dabblelab.com/img/skill-template-default-lg.png"
         },
-        "category": "EDUCATION_AND_REFERENCE",
         "testingInstructions": "This skill was built using the Appointment Scheduler Template.",
         "isAvailableWorldwide": true,
         "distributionCountries": []
